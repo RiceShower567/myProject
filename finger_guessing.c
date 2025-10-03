@@ -19,9 +19,8 @@ int main() {
     while(flag == 0) {
         int myChoice = myPlay();
         int enemyChoice = enemyPlay();
-        int flag = judge(myChoice,enemyChoice);
+        flag = judge(myChoice,enemyChoice);
     }
-
 
     return 0;
 }
