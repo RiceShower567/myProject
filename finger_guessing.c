@@ -14,13 +14,26 @@ int main() {
 
     int flag = 0;   //记录输赢状态
     int game = 0;   //记录局数
+    int startTime,currentTime;  //记录一局的游戏开始时间与思考时间
 
     while(flag == 0) {
         game++;
-        printf("\n第%d局开始\n请选择：\n1.石头\n2.剪刀\n3.布\n请输入：",game);
+        printf("\n第%d局开始\n请在十秒内做出选择：\n1.石头\n2.剪刀\n3.布\n请输入：",game);
+        fflush(stdout);
+
+        //判定选择时间是否超时
+        time(&startTime);
         int myChoice = myPlay();
+        time(&currentTime);
+        if(difftime(currentTime,startTime) >= 10) {
+            break;
+        }
+
         int enemyChoice = enemyPlay();
         flag = judge(myChoice, enemyChoice);
+    }
+    if(flag == 0) {
+        printf("\n选择超时\n");
     }
     printf("\n游戏结束");
 
@@ -101,4 +114,5 @@ int judge(int myChoice,int enemyChoice) {
     }
 
 }
+
 
