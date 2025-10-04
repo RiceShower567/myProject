@@ -12,8 +12,8 @@ int judge(int myChoice,int enemyChoice);
 
 int main() {
 
-    int flag = 0;
-    int game = 0;
+    int flag = 0;   //记录输赢状态
+    int game = 0;   //记录局数
 
     while(flag == 0) {
         game++;
