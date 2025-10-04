@@ -7,6 +7,7 @@
 #define BU 3
 
 int enemyPlay();
+int enemyPlay2(int myChoice);
 int myPlay();
 void judge(int myChoice, int enemyChoice, int* myWin, int* enemyWin);
 
@@ -18,13 +19,39 @@ int main() {
 
     srand(time(NULL));
 
+    printf("你要进入的游戏模式是：\n1.正常模式（aaa）\n2.作弊模式（zzz）\n请输入：\n");
+
+    char mode[4];
+
+    while(strcmp(mode,"aaa") != 0 && strcmp(mode,"zzz") != 0) {
+        while(getchar() != '\n');
+        printf("\n无效输入，请重新选择！\n");
+        printf("\n你要进入的游戏模式是：\n1.正常模式（aaa）\n2.作弊模式（zzz）\n请输入：\n");
+        fgets(mode,sizeof(mode),stdin);
+    }
+
+    if(strcmp(mode,"aaa") == 0) {
+        printf("进入正常模式");
+    } else if(strcmp(mode,"zzz") == 0) {
+        printf("进入作弊模式");
+    }
+
     while(myWin != 3 && enemyWin != 3 && game != 5) {
         game++;
         printf("\n第%d局开始\n请选择：\n1.石头\n2.剪刀\n3.布\n请输入：",game);
         int myChoice = myPlay();
-        int enemyChoice = enemyPlay();
+        int enemyChoice;
+
+        //判断游戏模式
+        if(strcmp(mode,"aaa") == 0) {
+            enemyChoice = enemyPlay();
+        } else if(strcmp(mode,"zzz") == 0) {
+            enemyChoice = enemyPlay2(myChoice);
+        }
+
         judge(myChoice, enemyChoice, &myWin, &enemyWin);
     }
+
     
     if(myWin > enemyWin) {
         printf("\n比分为 %d : %d ,你赢了!\n",myWin,enemyWin);
@@ -38,9 +65,22 @@ int main() {
     return 0;
 }
 
-//对手出拳
+//正常模式下对手出拳
 int enemyPlay() {
     return rand() % 3 + 1;
+
+}
+
+//作弊模式下对手出拳
+int enemyPlay2(int myChoice) {
+    switch(myChoice) {
+        case SHITOU:
+            return JIANDAO;
+        case JIANDAO:
+            return BU;
+        case BU:
+            return SHITOU;
+    }
 
 }
 
@@ -113,7 +153,6 @@ void judge(int myChoice, int enemyChoice, int* myWin, int* enemyWin) {
                     printf("对面出布，平局。\n");
                     return;
             }
-        
     }
 
 }
