@@ -19,23 +19,24 @@ int main() {
 
     srand(time(NULL));
 
-    printf("你要进入的游戏模式是：\n1.正常模式（aaa）\n2.作弊模式（zzz）\n请输入：\n");
-
-    char mode[4];
-
-    while(strcmp(mode,"aaa") != 0 && strcmp(mode,"zzz") != 0) {
-        while(getchar() != '\n');
-        printf("\n无效输入，请重新选择！\n");
+    //选择游戏模式
+    char mode[10];
+    do {
         printf("\n你要进入的游戏模式是：\n1.正常模式（aaa）\n2.作弊模式（zzz）\n请输入：\n");
-        fgets(mode,sizeof(mode),stdin);
-    }
+        scanf("%s", &mode);
+        if(strcmp(mode,"aaa") != 0 && strcmp(mode,"zzz") != 0) {
+            printf("\n无效输入，请重新选择！\n");
+            while(getchar() != '\n');
+        }
+    } while(strcmp(mode,"aaa") != 0 && strcmp(mode,"zzz") != 0);
 
     if(strcmp(mode,"aaa") == 0) {
-        printf("进入正常模式");
+        printf("\n进入正常模式\n");
     } else if(strcmp(mode,"zzz") == 0) {
-        printf("进入作弊模式");
+        printf("\n进入作弊模式\n");
     }
 
+    //开始游戏
     while(myWin != 3 && enemyWin != 3 && game != 5) {
         game++;
         printf("\n第%d局开始\n请选择：\n1.石头\n2.剪刀\n3.布\n请输入：",game);
