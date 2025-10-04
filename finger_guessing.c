@@ -18,7 +18,7 @@ int main() {
 
     srand(time(NULL));
 
-    while(myWin != 3 && enemyWin != 3 && game != 5) {
+    while(myWin != 2 && enemyWin != 2 && game != 3) {
         game++;
         printf("\n第%d局开始\n请选择：\n1.石头\n2.剪刀\n3.布\n请输入：",game);
         int myChoice = myPlay();
