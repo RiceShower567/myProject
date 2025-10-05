@@ -89,9 +89,10 @@ int find(int num, int gradeCount[20]) {
 
 //输出统计结果
 void print(int gradeCount[20], int count[20]) {
+    printf("分数分布统计\n分数\t人数\n============");
     for(int i = 0; i < 20; i++) {
         if(count[i] != 0) {
-            printf("\n%d出现了%d次", gradeCount[i], count[i]);
+            printf("\n%d\t%d", gradeCount[i], count[i]);
         }
     }
 }
