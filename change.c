@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void change(int* a, int* b);
+void swap(int* a, int* b);
 
 int main() {
     int a, b;
@@ -10,14 +10,14 @@ int main() {
 
     printf("a = %d, b = %d\n", a, b);
 
-    change(&a, &b);
+    swap(&a, &b);
 
     printf("a = %d, b = %d\n", a, b);
 
     return 0;
 }
 
-void change(int* a, int* b) {
+void swap(int* a, int* b) {
     int temp = *a;
     *a = *b;
     *b = temp;
