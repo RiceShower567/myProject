@@ -4,7 +4,14 @@ int count(int n);
 
 int main() {
     int n;
-    scanf("%d", &n);
+    do {
+        printf("请输入一个非负整数：");
+        scanf("%d", &n);
+        if(n < 0) {
+            printf("无效，请重新输入：");
+            while(getchar() != '\n');
+        }
+    } while(n < 0);
     // int times = 0;
     // long long temp1 = 1;
     // long long temp2 = 1;
