@@ -1,3 +1,6 @@
+Git仓库：
+https://github.com/RiceShower567/myProject/tree/main
+
 #### 1.Git初识
 - Git是一个编写代码的工具，主要功能是给代码“存档”、整合多份代码。
   
